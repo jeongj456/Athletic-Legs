@@ -1,0 +1,568 @@
+.workout {
+  text-align: center;
+  margin: 50px;
+  flex: 1 1 calc(33% - 20px);
+  display: inline-flex;
+  justify-content: center;
+  /* Centers the workout inside the flex container */
+  padding-left: 5%;
+}
+
+.individualWorkout {
+  height: 200px;
+  width: 250px;
+  outline: 2px solid #333;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(191, 218, 231, 255);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  position: relative; /* Make this relative so the DeleteButton can be positioned inside */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.individualWorkout::-webkit-scrollbar {
+  display: none;
+  /* For Chrome, Safari, and Opera */
+}
+
+.EnterWorkouts,
+.Title {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.Title {
+  font-size: large;
+}
+.Title h1 {
+  color: white;
+}
+.WorkoutList {
+  padding-top: 10%;
+  padding-left: 5%;
+  width: 20%;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  /* Ensures text inside the box is centered */
+}
+
+.WorkoutList ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.WorkoutList li {
+  padding-bottom: 2%;
+  margin-bottom: 5px;
+  /* Adds space between workout items */
+  text-align: center;
+  /* Aligns each list item in the center */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow-wrap: break-word; /* Ensure compatibility with different browsers */
+}
+
+.ErrorMessage {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.TotalPage {
+  background-color: white;
+  font-family: "Josefin Sans";
+  font-size: 18px;
+}
+
+/* Modal container (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 10000;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.8);
+  /* Black w/ opacity */
+}
+
+/* Modal content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  /* 10% from top, centered */
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #888;
+  width: 80%;
+  /* Could be more or less, depending on screen size */
+  max-width: 600px;
+  /* Maximum width */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
+  /* Add shadow for a floating effect */
+  text-align: center;
+  /* Center the content */
+}
+
+/* The Close Button */
+.close, .editWorkoutClose, .logDataClose{
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus,
+.editWorkoutClose:hover,
+.editWorkoutClose:focus,
+.logDataClose:hover,
+.logDataClose:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Modal form styling */
+.modal-content form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Two columns for the form fields */
+  gap: 10px;
+  justify-items: center;
+}
+
+.modal-content form input[type="text"] {
+  width: 90%;
+  padding: 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Submit button styling */
+.modal-content form button[type="submit"] {
+  grid-column: span 2;
+  /* Make the button span both columns */
+  background-color: #006ca1;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content form button[type="submit"]:hover {
+  background-color: #004d75;
+}
+
+#workoutModal.modal {
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.AddWorkoutButton {
+  justify-content: flex-end;
+  align-items: right;
+  display: flex;
+  padding-right: 3%;
+}
+
+#openModalBtn {
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
+  outline: 2px solid #333;
+}
+
+.DeleteButton {
+  display: flex;
+  justify-content: flex-end;
+  color: red;
+  width: 50px; /* Set a fixed width that accommodates the enlarged icon */
+  height: 50px; /* Set height to prevent layout shift */
+  display: flex;
+  justify-content: flex-end; /* Ensure the icon aligns to the right */
+  position: absolute; /* To control the icon's position */
+  top: 20px; /* Adjust distance from the top */
+  right: 20px; /* Adjust distance from the right */
+}
+.Header {
+  justify-content: space-between;
+}
+.TotalHeader .TotalPage {
+  width: 100vw;
+  padding: 20px 0;
+  border-top: 5px solid #004d75; /* Add a blue border at the top */
+}
+
+.TotalPage hr {
+  border: none;
+  height: 2px; /* Adjust thickness */
+  background-color: #004d75; /* Set the blue color */
+  margin: 0; /* Remove margin if necessary */
+}
+
+.TotalHeader {
+  background-color: #004d75;
+}
+
+.TotalPage,
+.TotalPageBody {
+  margin: 0;
+}
+
+.TotalPage hr {
+  border: none;
+  height: 2px;
+  background-color: #004d75;
+  margin: 0;
+}
+
+.Title {
+  margin: 0;
+  padding: 0;
+}
+
+.Header {
+  margin: 0;
+  padding: 0;
+}
+
+.AddWorkoutButton {
+  justify-content: flex-end;
+  align-items: right;
+  display: flex;
+  padding-right: 3%;
+}
+
+/* Styling the Add New Workout Button */
+#openModalBtn {
+  background-color: #006ca1; /* Blue background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Add padding for size */
+  font-size: 16px; /* Increase font size */
+  border: none; /* Remove default border */
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer; /* Change cursor to pointer */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover transition */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Subtle box shadow for a 3D effect */
+  outline: none; /* Remove default outline */
+}
+
+/* Hover effect for the button */
+#openModalBtn:hover {
+  background-color: #004d75; /* Darker blue on hover */
+  transform: translateY(-3px); /* Slight lift on hover */
+}
+
+/* Active state effect (when the button is clicked) */
+#openModalBtn:active {
+  background-color: #003d5c; /* Even darker blue when pressed */
+  transform: translateY(0); /* Reset the lift when pressed */
+}
+
+/* Focused state for accessibility */
+#openModalBtn:focus {
+  outline: 2px solid #fff; /* White outline when focused */
+}
+
+#TrashCan:hover {
+  transform: scale(1.5); /* Increase the size by 1.5x */
+  transition: transform 0.5s ease; /* Smooth transition for the size change */
+  cursor: pointer; /* Add a pointer cursor on hover */
+}
+
+.StickyHeader {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}
+.TotalPageBody {
+  padding-top: 70px; /* Adjust this value based on the height of your StickyHeader */
+}
+
+.workout-list {
+  padding-top: 100px; /* Apply the same padding to make sure workouts aren't cut off */
+  margin-top: 60px;
+}
+
+.VerticalEllipses {
+  position: relative;
+  display: inline-block;
+}
+
+.VerticalEllipses .fa-ellipsis-v {
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  min-width: 120px;
+  z-index: 1;
+  right: 0;
+}
+
+.dropdown-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-content li {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.dropdown-content li:hover {
+  background-color: #f1f1f1;
+}
+
+.VerticalEllipses {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.VerticalEllipses .fa-ellipsis-v {
+  font-size: 20px;
+  color: #333;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  min-width: 120px;
+  z-index: 1;
+  right: 0;
+  top: 20px;
+}
+
+.dropdown-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-content li {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.dropdown-content li:hover {
+  background-color: #f1f1f1;
+}
+
+.WarningText {
+  font-size: 13px;
+  color: red;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}
+
+.SearchBar {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 600px;
+}
+
+#searchForm {
+  display: flex;
+  width: 100%;
+}
+
+#searchInput {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+#searchInput:focus {
+  border-color: #006ca1;
+  box-shadow: 0 0 5px rgba(0, 108, 161, 0.5);
+}
+
+#searchForm button[type="submit"] {
+  background-color: #006ca1;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#searchForm button[type="submit"]:hover {
+  background-color: #004d75;
+}
+
+#clearSearchBtn {
+  margin-top: 10px; /* Space between search bar and clear filter button */
+  background-color: #f1f1f1;
+  color: #333;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#clearSearchBtn:hover {
+  background-color: #e0e0e0;
+}
+
+
+/* Log Workout */
+.workout-row {
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  justify-content: space-between;
+}
+
+/* Workout title styling */
+.workout-row p {
+  font-weight: bold;
+  margin: 0 10px 0 0; /* Add margin-right for spacing */
+  text-align: left;
+  min-width: 120px; /* Define minimum width for consistent spacing */
+}
+
+/* Label and input styling for the fields */
+.workout-row label {
+  font-size: 14px;
+  color: #333;
+  margin-right: 5px;
+}
+
+.workout-row input {
+  width: 60px; /* Define width for inputs to keep them aligned */
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.workout-row input:focus {
+  border-color: #006ca1;
+  box-shadow: 0 0 5px rgba(0, 108, 161, 0.5);
+}
+
+/* Adjust the workout details container if needed */
+#logWorkoutDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+/* Save button styling */
+#saveLogDataBtn {
+  background-color: #006ca1;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+#saveLogDataBtn:hover {
+  background-color: #004d75;
+}
+
+.modal-content-logWorkout {
+  background-color: #fefefe;
+  margin: 10% auto;
+  /* 10% from top, centered */
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #888;
+  width: 80%;
+  /* Could be more or less, depending on screen size */
+  max-width: 600px;
+  /* Maximum width */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
+  /* Add shadow for a floating effect */
+  text-align: center;
+  /* Center the content */
+}
+
+
+.modal-content-logWorkout form {
+  grid-template-columns: 1fr 1fr;
+  /* Two columns for the form fields */
+  gap: 10px;
+  justify-items: center;
+}
+
+.modal-content-logWorkout form input[type="text"] {
+  width: 90%;
+  padding: 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Submit button styling */
+.modal-content-logWorkout form button[type="submit"] {
+  grid-column: span 2;
+  /* Make the button span both columns */
+  background-color: #006ca1;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content-logWorkout form button[type="submit"]:hover {
+  background-color: #004d75;
+}
+

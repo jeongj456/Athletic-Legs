@@ -1,0 +1,65 @@
+# Athletic Legs
+
+This repository contains the codebase for managing workout plans, nutrition tracking, user profiles, and more. Below is an overview of each file, its location, and the page it supports.
+
+
+### Forgot Password (Folder: `Workout_Forgot`)
+- `Check_Code.php`: Verifies the reset code.
+- `ConfirmNewPassword.php`: Updates the user's password.
+- `ForgotPasswordPage.php`: Allows users to request a password reset.
+- `LinkConfirmation.php`: Confirms the reset link sent via email.
+- `ReEnter.php`: Prompts the user to re-enter their password.
+- `ResetPassword.php`: Provides a form for the user to input a new password.
+- `ResetSuccessConfirmation.php`: Displays a success message after a successful reset.
+- `Send_Email.php`: Handles sending the password reset email.
+
+### Friends (Folder: `Workout_Friends`)
+- `Friends.php`: Displays the user's friends list and allows interactions.
+- `Friendsbackend.php`: Manages backend functionalities like adding friends and retrieving friend data.
+
+### Login Page (Folder: `Workout_Login`)
+- `Login.php`: Provides the login interface.
+- `Verify_Account.php`: Checks the entered credentials.
+- `Al_logo.png`: Logo for the "Athletic Legs" brand.
+
+### Profile Page (Folder: `Workout_ProfilePage`)
+- `Profile.php`: Displays the user’s profile.
+- `Profilebackend.php`: Updates user details and retrieves profile data.
+- `dumbbell.png`, `jumping_jacks.png`, `treadmill.png`: Icons representing workout equipment.
+
+### Planned Workouts (Folder: `Workout_PlannedWorkouts`)
+- `MyWorkout_Backend.php`: Backend functionality for Planned Workouts.
+- `PlannedWorkout.php`: Frontend for displaying planned workouts.
+- `saved.php`: Event listeners for sharing workouts.
+- `WorkoutCards.css`: Styles the Planned Workouts page.
+
+### Workout History (Folder: `Workout_History`)
+- `WorkoutHistory_BackEnd.php`: Retrieves workout history data.
+- `WorkoutHistory_FrontEnd.php`: Displays the workout history.
+- `WorkoutHistory_style.css`: Styles the workout history page.
+
+### Navbar (Folder: `Navbar`)
+- `navbar.css`: Styles the navigation bar.
+- `navbar.php`: Implements the navigation functionality.
+
+### Macronutrients (Folder: `Workout_MacroPage`)
+- `backend.php`: Handles backend operations for macros.
+- `macros_mobile.css`: Styles for mobile devices.
+- `macros.css`: Styles for larger screens.
+- `Macros.php`: Displays user nutrition and macro info.
+- `macrosPieChart.php`: Generates a macro breakdown chart.
+
+### Shared Workouts (Folder: `Workout_SharedWorkouts`)
+- `backend.php`: Manages shared and incoming workouts.
+- `incomingworkouts.php`: Displays incoming shared workouts.
+- `sharedworkouts_mobile.css`: Styles for mobile devices.
+- `sharedworkouts.css`: Styles for desktop.
+- `sharedworkouts.php`: Main frontend for shared workouts.
+
+### Stats (Folder: `Workout_Stats`)
+- `skill.png`: Sample image for graph development.
+- `WorkoutStats.php`: Frontend for displaying stats.
+- `WorkoutStatsBackend.php`: Backend for data retrieval and calculations.
+
+### CSRF (Folder: `csrf`)
+- `use.txt`: Instructions for CSRF protection across pages.

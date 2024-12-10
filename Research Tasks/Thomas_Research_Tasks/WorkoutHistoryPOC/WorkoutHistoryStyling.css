@@ -1,0 +1,120 @@
+/* General styles */
+body {
+    background-color: #006CA1;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #000000;
+    text-align: center;
+    
+}
+
+#blackMedium {
+    font-family: verdana;
+    font-size: 20px;
+    color: #000000;
+    width: 100%;
+    max-width: 300px;
+    border: 15px #006CA1;
+    padding: 50px;
+    margin: 20px auto;
+}
+
+/* Form container styles */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px;
+}
+
+form label, form input {
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Table title and data styles for larger screens */
+.Table_title{
+    border-bottom: 5px solid #000;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgba(255, 255, 255, .75);
+    justify-content: center;
+}
+
+.Table_title > div {
+    background-color: rgb(0, 0, 0);
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+}
+.Table_data > div{
+    outline: 2px solid #000;
+    /* background-color: rgba(255, 255, 255, .75); */
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    color: rgb(0,0,0);
+}
+
+.WorkoutWrap {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 20px;
+    text-align: center;
+}
+
+/* Dividing line between workouts */
+.Table_data {
+    border-bottom: 5px solid #000; /* Divider line between each workout */
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgba(255, 255, 255, .75);
+    justify-content: center;
+    
+}
+
+/* Mobile responsiveness */
+@media only screen and (max-width: 768px) {
+    .Table_title, .Table_data {
+        flex-wrap: wrap; /* Wrap the table items for small screens */
+    }
+
+    .Table_title > div, .Table_data > div {
+        width: 100%; /* Make each item full width on smaller screens */
+        margin: 5px 0;
+        line-height: 50px; /* Reduce line-height for smaller screens */
+        font-size: 20px; /* Adjust font size for mobile */
+    }
+
+    form {
+        flex-direction: column; /* Stack form elements vertically */
+        gap: 5px;
+    }
+
+    form label, form input {
+        max-width: 100%; /* Make form elements full width */
+        margin: 5px 0;
+    }
+
+    .Table_data {
+        flex-direction: column; /* Stack workouts vertically on smaller screens */
+        margin-bottom: 20px; /* Add space between each workout */
+    }
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 5px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+

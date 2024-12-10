@@ -1,0 +1,41 @@
+In forms that are submitted to the backend with a button submit
+
+Frontend(inside form that is being submitted):--------------------------------------------------------------------------
+<input type="hidden" name="csrf_token" value="<?php session_start(); echo hash(sha256, $_SESSION['csrf_token']);?>">
+
+Backend:--------------------------------------------------------------------------
+session_start();
+if (empty($_POST['csrf_token']) || $_SESSION['csrf_token'] != hash(sha256, $_POST['csrf_token'])) {     
+  header_response_code(401);
+  echo('Fail');
+  exit();  
+}
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+If there are no forms that are submitted but rather use fetch api
+Frontend:--------------------------------------------------------------------------
+(inside the html)
+<input type="hidden" id="csrf_token" value="<?php session_start(); echo $_SESSION['csrf_token'];?>">
+
+(inside the script portion at the beginning)
+const csrf_token = document.getElementById("csrf_token").value;
+
+(for every fetch)
+fetch('./WorkoutHistory_BackEnd.php', {
+    headers: {
+    "X-CSRF-Token": csrf_token,
+    "Content-Type": "application/json"
+    },
+})
+
+Backend:--------------------------------------------------------------------------
+(inside if statement checking to see if it is a get or post request; after json decoding)
+session_start();
+if ($_SERVER['HTTP_X_CSRF_TOKEN'] != $_SESSION['csrf_token']){
+    echo('Fail');
+    exit();  
+}
+
+https://www.tutorialspoint.com/how-to-read-any-request-header-in-php
+--> accessing the http headers
