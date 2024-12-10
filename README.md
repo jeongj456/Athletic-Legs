@@ -1,6 +1,6 @@
 # Athletic Legs
 
-This repository contains the codebase for managing workout plans, nutrition tracking, user profiles, and more. Below is an overview of the folder structure to help guide you when looking for relevant files.
+This repository contains the codebase for managing workout plans, nutrition tracking, user profiles, and more. Below is an overview of the folder structure to help guide you when looking for relevant files. This is the web app that my team and I developed at the University at Buffalo
 
 ## Folder Structure
 
